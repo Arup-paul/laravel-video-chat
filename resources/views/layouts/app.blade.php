@@ -10,6 +10,17 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script>
+        @auth
+        window.user = {
+            id:{{ auth()->id() }},
+            name:"{{auth()->user()->name}}"
+        };
+
+        window.csrfToken = "{{ csrf_token() }}"
+         @endauth
+
+    </script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
